@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Home
+{% endblock title %}
+
+{% block body %} 
+
+<div class="jumbotron container my-2">
+  
+    <div class="card w-50 mx-auto">
+    <div class="card-body">
+       
+          <a  href="login/" class="btn btn-success my-4 btn-block btn-lg btn btn-primary btn-success mx-2 mt-2" data-toggle="modal" data-target="#loginModal"><i ></i><span class="my-auto"> Login</span></a>
+          <h5 style="text-align:center; border-bottom:2px solid black;"> Or create an account </h5>
+          <a  href="signup/" class="btn btn-primary btn-info my-4 btn-block btn-lg btn btn-primary btn-info mx-2 mt-2" data-toggle="modal" data-target="#signupModel"><i ></i><span class="my-auto">Sign Up</span></a></a>
+      
+    </div>
+    </div>
+</div>
+
+
+
+
+{% endblock body %}

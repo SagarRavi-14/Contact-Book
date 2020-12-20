@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Dashboard
+{% endblock title %}
+{% block css %}
+{% endblock css %}
+
+
+
+
+
+{% block body %}
+
+{% if user.is_authenticated %}
+{% comment %} all content was in base.html {% endcomment %}
+
+{% else %}
+  <div class="alert alert-danger" role="alert">
+    Message: Please login first
+    <a href="/" class="alert-link"
+      ><button class="btn btn-primary mx-2 mb-2">Login</button></a
+    >
+{% endif %}
+{% endblock body %}

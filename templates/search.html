@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %} Search
+{% endblock title %}
+
+{% block body %}
+{% if user.is_authenticated %}
+<div class="container">
+{% if all|length > 0 %}<h2>Search Result for :</h2>{% endif %}
+<div class="container mt-2">
+<div class="row">
+{% for item in page_obj %}
+   <div class="col-6 col-md-6">
+   <div class="card my-1 ">
+   
+  <div class="card-body">
+    <p style="font-weight:600; text-transform: capitalize;"><button type="button" class="btn btn-success btn-sm mr-2">Name</button>{{item.first_name}} {{item.last_name}} </p>
+    <p style="font-weight:600;"><button type="button" class="btn btn-warning btn-sm mr-2">Email</button>{{item.email}}</p>
+    
+    <div class="dropdown">
+  <button class="btn btn-info btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/update/{{item.sno}}">Edit</a>
+    <a class="dropdown-item"  data-toggle="modal" data-target="#exampleModal" style="cursor: pointer;">Delete</a>
+  </div>
+    </div>
+  </div>
+</div>
+</div>
+
+ {% endfor %}
+ 
+ <div class='container  my-3 mb-3' style="text-align:centre;">
+
+<div class="pagination">
+    <span class="step-links mx-auto">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; First</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current mx-2">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">   Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</div> 
+</div>
+{% else %}
+  <div class="alert alert-danger" role="alert">
+    Message: Please login first
+    <a href="/" class="alert-link"
+      ><button class="btn btn-primary mx-2 mb-2">Login</button></a>
+{% endif %}
+
+
+
+
+{% endblock body %}

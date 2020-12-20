@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} Delete
+{% endblock title %}
+
+{% block body %}
+{% for item in object %}
+<div class="container ">
+<h3 class="mx-auto px-auto" style="text-align: center; border-bottom:2px solid black">Confirmation</h3>
+<div class="col-6 col-md-6 mx-auto my-5">
+   <div class="card my-1 ">
+   
+  <div class="card-body">
+    <p style="font-weight:600; text-transform: capitalize;"><button type="button" class="btn btn-success btn-sm mr-2">Name</button>{{item.first_name}} {{item.last_name}}</p>
+    <p style="font-weight:600;"><button type="button" class="btn btn-warning btn-sm mr-2">Email</button>{{item.email}}</p>
+    <div class="alert alert-danger mt-2" role="alert">
+    <span>Do you want to delete this contact   </span>  <a href="{% url "confirm_delete" item.sno %}"><button type="button" class="btn btn-info btn-sm mr-2 ml-2">Yes</button></a>
+</div>
+    </div>
+    </div>
+    </div>
+
+</div>
+{% endfor %}
+{% endblock body %}
